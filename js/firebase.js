@@ -8,6 +8,7 @@ var imageName, imageUrl;
 var files = [];
 // ファイルの読み込みクラスのための変数
 var reader;
+let fileExtension;
 
 //  ----------------------- 画像選択ボタンクリック時の処理  -----------------------
 document.getElementById("select").onclick = function (e) {
@@ -32,8 +33,10 @@ document.getElementById("select").onclick = function (e) {
             document.getElementById("myimg").src = reader.result;
         };
         // console.dir(files[0]);
+        console.dir();
         reader.readAsDataURL(files[0]);
-
+        fileExtension = getExt(files[0].name);
+        console.log(fileExtension);
         setName(gazounonamae);
     };
 
@@ -49,18 +52,23 @@ function setName(gazounonamae) {
         }
     }
 }
-
+function getExt(filename) {
+    var pos = filename.lastIndexOf(".");
+    if (pos === -1) return "";
+    return filename.slice(pos + 1);
+}
 //----------------------- 画像をstorageにアップロード -----------------------
 document.getElementById("upload").onclick = function () {
     //画像の設定名前を変数に代入
     imageName = document.getElementById("namebox").value;
     // console.log(imageName);
 
+
     // upLoadTaskにfirebaseクラスのstorageメソッドの中のrefメソッドで
     // storage内に作ってあるImageディレクトリに{imageName}.pngのファイル名でfile[0]を入れる
     var upLoadTask = firebase
         .storage()
-        .ref("Images/" + imageName + ".png")
+        .ref(`Images/${imageName}.${fileExtension}`)
         .put(files[0]);
 
     // upLoadTaskをonメソッドで処理

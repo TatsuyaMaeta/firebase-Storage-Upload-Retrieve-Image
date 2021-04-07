@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>firebase_image_upload_and_retrieve</title>
+        <link rel="stylesheet" href="./css/reset.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <style>
+            img{height: 200px; width: 200px; border: 1px solid black;}
+        </style>
+
+        <div class="test">firebase_image_upload_and_retrieve</div>
+
+        Image Name <input type="text" id="namebox">
+
+        <img id="myimg" alt=""><label id="upProgress"></label>
+        <br><br>
+
+        <button id="select">画像を選択する</button>
+        <button id="upload">画像をアップロード</button>
+        <button id="retrieve">データベースの画像を取得</button>
+
+
+
+
+
+
+
+
+
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-app.js"></script>
+        <!-- 下記2行追記 -->
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.3.2/firebase-storage.js"></script>
+        <!-- firebaseの設定を読み込み -->
+        <script src="../env/env_firebase_image_upload_and_retrieve/env.js"></script>
+
+        <script>
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = envFirebaseConfig; //envFirebaseConfigは別ディレクトリにあるFirebase用のIDなどの情報の変数
+
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            // console.log(firebaseConfig);
+        </script>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="js/firebase.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+</html>
+
